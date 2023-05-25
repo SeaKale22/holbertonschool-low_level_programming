@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * Main - Void. Entry point of program
+ * main - Void. Entry point of program
  *
  * Description: Pritns a thing
  *
