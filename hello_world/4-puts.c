@@ -1,10 +1,9 @@
 #include <stdio.h>
 /**
- * main - Entry point of the program
+ * main - prints the thing
  *
- * Description: Prints the phrase "Programming is like building a multilingual puzzle" with the first double quotation marks included
+ * Return: Is 0
  *
- * Return: Always 0 (success)
  */
 int main(void)
 {
