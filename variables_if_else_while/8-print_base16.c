@@ -8,9 +8,9 @@ int main(void)
 {
 	int hxd = 0;
 
-	while(hxd < 16)
+	while (hxd < 16)
 	{
-		if(hxd < 10)
+		if (hxd < 10)
 			putchar('0' + hxd);
 		else
 			putchar('a' + hxd - 10);
