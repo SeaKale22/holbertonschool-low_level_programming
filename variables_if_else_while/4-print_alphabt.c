@@ -11,6 +11,7 @@ int main(void)
 	for (i = 0; i < 26; i++)
 	{
 		char lc = 'a' + i;
+
 		if (lc != 'q' && lc != 'e')
 		putchar(lc);
 	}
