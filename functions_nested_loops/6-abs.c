@@ -2,7 +2,7 @@
 /**
  * _abs - computes absolute value of an integer
  * @n: a number
- * Returns: n or -n if n is negitive
+ * Return: n or -n if n is negitive
  */
 int _abs(int n)
 {
