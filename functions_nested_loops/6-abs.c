@@ -1,7 +1,8 @@
 #include "main.h"
 /**
  * _abs- computes absolute value of an integer
- * Returns: Somthing?
+ * @n: a number
+ * Returns: n or -n if n is negitive
  */
 int _abs(int n)
 {
