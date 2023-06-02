@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - Prints the numbers from 1 to 100, followed by a new line.FizzBuzz stuff.
+ * main - Prints the numbers from 1 to 100, FizzBuzz
  * Return: Always 0
  */
 int main(void)
@@ -23,7 +23,7 @@ int main(void)
 		}
 		else
 		{
-			printf("%d",i);
+			printf("%d", i);
 		}
 
 		if (i < 100)
@@ -33,6 +33,6 @@ int main(void)
 	}
 
 	printf("\n");
-	
-	return(0);
+
+	return (0);
 }
