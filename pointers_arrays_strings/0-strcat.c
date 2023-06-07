@@ -3,14 +3,13 @@
  * _strcat- concatenares two strings
  * @dest: first string to be cat
  * @src: second string to be cat
- * Retrun: A pointer to the resulting string dest
+ * Return: A pointer to the resulting string dest
  */
 char *_strcat(char *dest, char *src)
 {
 	int destlngth = 0;
 	int srclngth = 0;
 	int i;
-	
 	while (dest[destlngth] != '\0')
 	{
 		destlngth++;
