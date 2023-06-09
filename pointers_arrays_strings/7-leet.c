@@ -13,6 +13,7 @@ char *leet(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		int j;
+
 		for (j = 0; repl[j] != '\0'; j++)
 		{
 			if (str[i] == repl[j])
