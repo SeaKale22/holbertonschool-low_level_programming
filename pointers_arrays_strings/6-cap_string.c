@@ -10,7 +10,7 @@ char *cap_string(char *str)
 	    int i;
 	    int cap_next = 1;
 	    int word_start = 1;
-	    
+ 
 	    for (i = 0; str[i] != '\0'; i++)
 	    {
 		    if (str[i] >= 'a' && str[i] <= 'z')
