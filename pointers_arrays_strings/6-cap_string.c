@@ -18,11 +18,13 @@ char *cap_string(char *str)
 		}
 		else if (!capnxt && (str[i] >= 'A' && str[i] <= 'Z'))
 		{
-			str[i] += 'a' - 'A';
+			str[i] += 'A' - 'a';
 		}
 
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == ',' || str[i] == ';' || str[i] == '.' || str[i] == '!' || 
-				str[i] == '?' || str[i] == '"' || str[i] == '(' || str[i] == ')' || str[i] == '{' || str[i] == '}')
+		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == ',' ||
+				str[i] == ';' || str[i] == '.' || str[i] == '!' || str[i] == '?' ||
+				str[i] == '"' || str[i] == '(' || str[i] == ')' || str[i] == '{' ||
+				str[i] == '}' || str[i] == '\0')
 		{
 				capnxt = 1;
 		}
