@@ -5,7 +5,7 @@
  *
  * Return: the natral square root
  *
- * sqrtfinder- helper function to narrow or widen search
+ * sqrtfinder- function to narrow or widen search
  * @low: lower bounds of search
  * @high: upper bounds of search
  */
@@ -24,7 +24,7 @@ int sqrtfinder(int n, int low, int high)
 	{
 		return (-1);
 	}
-	mid = low + (high - low) / 2;
+	mid = low + ((high - low) / 2);
 
 	if (mid * mid == n)
 	{
