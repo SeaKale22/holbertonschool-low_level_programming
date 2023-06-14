@@ -4,6 +4,10 @@
  * @n: the number in question
  *
  * Return: the natral square root
+ *
+ * sqrtfinder- helper function to narrow or widen search
+ * @low: lower bounds of search
+ * @high: upper bounds of search
  */
 int sqrtfinder(int n, int low, int high);
 
@@ -32,6 +36,6 @@ int sqrtfinder(int n, int low, int high)
 	}
 	else
 	{
-		return (sqrtfinder(n, low, mid -1));
+		return (sqrtfinder(n, low, mid - 1));
 	}
 }
