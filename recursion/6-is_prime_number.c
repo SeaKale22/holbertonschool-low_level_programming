@@ -1,4 +1,5 @@
 #include "main.h"
+int is_divisable(int n, int di);
 /**
  * is_prime_number - checks if number is prime
  * @n: the number to be checked
@@ -9,8 +10,6 @@
  *
  * Return: 1 if prime, 0 otherwise
  */
-int is_divisable(int n, int di);
-
 int is_prime_number(int n)
 {
 	if (n <= 1)
