@@ -5,10 +5,10 @@
  *
  * is_divisable- checks if n is divisable by a number other than 1
  * @di: the number to check n against
- * 
+ *
  * Return: 1 if prime, 0 otherwise
  */
-int is_divisable(int i, int di);
+int is_divisable(int n, int di);
 
 int is_prime_number(int n)
 {
