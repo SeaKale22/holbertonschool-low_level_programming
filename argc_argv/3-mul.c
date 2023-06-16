@@ -2,7 +2,7 @@
 #include <stdlib.h>
 /**
  * main- multiplies two numbers
- * @ardc: count of arguments
+ * @argc: count of arguments
  * @argv: vectors of arguments, should be two ints
  *
  * Return: 0 if sucssess, 1 if error
@@ -24,5 +24,4 @@ int main(int argc, char *argv[])
 	sum = a * b;
 	printf("%d\n", sum);
 	return (0);
-	
 }
