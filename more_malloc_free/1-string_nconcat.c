@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <string.h>
 /**
  * string_nconcat- concatenates two strings
  * @s1: string one
@@ -10,10 +11,8 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int l1 = 0;
-	unsigned int l2 = 0;
-	unsigned int i;
-	unsigned int j;
+	unsigned int l1;
+	unsigned int l2;
 	char *dest;
 
 	if (s1 == NULL)
@@ -24,46 +23,19 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		s2 = "";
 	}
-	while (s1[l1] != '\0')
-	{
-		l1++;
-	}
-	while (s2[l2] != '\0')
-	{
-		l2++;
-	}
+	l1 = strlen(s1);
+	l2 = strlen(s2);
 	if (n >= l2)
 	{
-		dest = malloc(sizeof(char) * (l1 + l2 + 1));
-		if (dest == NULL)
-		{
-			return (NULL);
-		}
-		for (i = 0; i <= l1; i++)
-		{
-			dest[i] = s1[i];
-		}
-		for (j = 0; j < l2; j++)
-		{
-			dest[l1 + j] = s2[j];
-		}
-		return (dest);
+		n = l2;
 	}
-	else
+	dest = malloc(sizeof(char) * (l1 + n + 1));
+	if (dest == NULL)
 	{
-		dest = malloc(sizeof(char) * (l1 + n + 1));
-		if (dest == NULL)
-		{
-			return (NULL);
-		}
-		for (i = 0; i <= l1; i++)
-		{
-			dest[i] = s1[i];
-		}
-		for (j = 0; j < n; j++)
-		{
-			dest[l1 + j] = s2[j];
-		}
-		return (dest);
+		return (NULL);
 	}
+	memcpy(dest, s1, l1);
+	memcpy(dest + l1, s2, n);
+	dest[l1 + n] = '\0';
+	return (dest);
 }
