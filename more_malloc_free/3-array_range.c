@@ -2,8 +2,8 @@
 #include <stdlib.h>
 /**
  * array_range- creates array of int
- * min: Min number
- * max: Max number
+ * @min: Min number
+ * @max: Max number
  *
  * Return: pointer to new array or NULL if fail
  */
