@@ -1,13 +1,15 @@
 #include "main.h"
 /**
- * binary_to_unit- converts binary num to unsigned base 10
+ * binary_to_uint- converts binary num to unsigned base 10
  * @b: binary number string
+ *
+ * Return: converted num or 0
  */
 unsigned int binary_to_uint(const char *b)
 {
 	int i;
 	int len;
-	int place;
+	unsigned int place = 1;
 	unsigned int num = 0;
 
 	if (b == NULL)
@@ -21,14 +23,13 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		}
 	}
-	place = 1 << (len - 1);
-	for (i = 0; b[i] != '\0'; i++)
+	for (i = len - 1; i >= 0; i--)
 	{
 		if (b[i] == '1')
 		{
 			num += place;
 		}
-		place = place >> 1;
+		place *= 2;
 	}
 	return (num);
 }
