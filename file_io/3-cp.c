@@ -2,77 +2,38 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdlib.h>
 /**
- * main- calles file_cp
- * 
- * Return: always 0
- */
-int main(int ac, char **av)
-{
-	int res;
-
-	if (ac != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-	res = file_cp(av[1], av[2]);
-	if (res == 98)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
-	else if (res == 99)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-		exit(99);
-	}
-	else if (res == 100)
-	{
-		exit(100);
-	}
-	else 
-		exit(0);
-}
-/**
- * file_cp- copies content of a file to another file
+ * file_cp- copies contents of a file to another file
  * @file_from: sorce file
- * @file_to: des file
+ * @file_to: dest file
  *
- * Return: 1 if successful
+ * Return: 1 on success, 97 - 100 for error
  */
 int file_cp(const char *file_from, const char *file_to)
 {
-	char *buffer;
+	char buffer[1024];
 	int file1_des, file2_des;
 	ssize_t read_chars, write_chars;
-	mode_t permissions = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
-	if (file_from == NULL || file_to == NULL)
-		return (97);
-	file1_des = open(file_from, O_WRONLY | O_CREAT | O_TRUNC, permissions);
+	file1_des = open(file_from, O_RDONLY);
 	if (file1_des == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		return (98);
-	file2_des = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, permissions);
+	}
+	file2_des = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file2_des == -1)
 	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		close(file1_des);
 		return (99);
 	}
-	buffer = malloc(1024);
-	if (buffer == NULL)
-	{
-		close(file1_des);
-		close(file2_des);
-		return (99);
-	}
-	while ((read_chars = read(file1_des, buffer, 1024)) > 0)
+	while ((read_chars = read(file1_des, buffer, sizeof(buffer))) > 0)
 	{
 		write_chars = write(file2_des, buffer, read_chars);
 		if (write_chars != read_chars)
 		{
-			free(buffer);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			close(file1_des);
 			close(file2_des);
 			return (99);
@@ -80,21 +41,41 @@ int file_cp(const char *file_from, const char *file_to)
 	}
 	if (read_chars == -1)
 	{
-		free(buffer);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		close(file1_des);
 		close(file2_des);
 		return (98);
 	}
-	free(buffer);
 	if (close(file1_des) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", file1_des);
+		dprintf(STDERR_FILENO, "Error: Can't close rd %d\n", file1_des);
 		return (100);
 	}
 	if (close(file2_des) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", file2_des);
+		dprintf(STDERR_FILENO, "Error: Can't close rd %d\n", file2_des);
 		return (100);
 	}
 	return (1);
+}
+/**
+ * main- calls file_cp
+ * @ac: arg count
+ * @av: args vectors
+ *
+ * Return: 0, else 97-100 for error
+ */
+int main(int ac, char **av)
+{
+	int cpres;
+
+	if (ac != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
+		return (97);
+	}
+	cpres = file_cp(av[1], av[2]);
+	if (cpres != 1)
+		return (cpres);
+	return (0);
 }
