@@ -83,7 +83,7 @@ int file_cp(const char *file_from, const char *file_to)
 		free(buffer);
 		close(file1_des);
 		close(file2_des);
-		return (0);
+		return (98);
 	}
 	free(buffer);
 	if (close(file1_des) == -1)
