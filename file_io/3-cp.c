@@ -48,12 +48,12 @@ int file_cp(const char *file_from, const char *file_to)
 	}
 	if (close(file1_des) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close rd %d\n", file1_des);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file1_des);
 		return (100);
 	}
 	if (close(file2_des) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close rd %d\n", file2_des);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file2_des);
 		return (100);
 	}
 	return (1);
