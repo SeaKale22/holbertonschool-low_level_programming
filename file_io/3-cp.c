@@ -14,7 +14,7 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		dprintf(STDERR_FILENO, "Useage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	res = file_cp(av[1], av[2]);
@@ -51,7 +51,7 @@ int file_cp(const char *file_from, const char *file_to)
 
 	if (file_from == NULL || file_to == NULL)
 		return (97);
-	file1_des = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, permissions);
+	file1_des = open(file_from, O_WRONLY | O_CREAT | O_TRUNC, permissions);
 	if (file1_des == -1)
 		return (98);
 	file2_des = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, permissions);
