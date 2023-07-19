@@ -2,7 +2,7 @@
 /**
  * delete_dnodeint_at_index- deletes node of list at index
  * @head: pointer to ponter to head
- * index: index of deleted node
+ * @index: index of deleted node
  *
  * Return: 1 or -1
  */
