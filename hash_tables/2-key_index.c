@@ -4,7 +4,7 @@
  * @key: the key
  * @size: Size of the array of the hash table
  *
- * Retun: index where key/value pair is stored in the array of the hash table
+ * Return: index where key/value pair is stored in the array of the hash table
  */
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
