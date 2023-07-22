@@ -5,13 +5,14 @@
  */
 void hash_table_print(const hash_table_t *ht)
 {
-	unsigned long int size = ht->size;
+	unsigned long int size;
 	unsigned long int i;
 	hash_node_t *node;
 	int printed = 0;
 
 	if (ht != NULL)
 	{
+		size = ht->size;
 		printf("{");
 		for (i = 0; i < size; i++)
 		{
